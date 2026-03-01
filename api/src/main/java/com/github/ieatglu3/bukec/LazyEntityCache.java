@@ -4,6 +4,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.Chunk;
 import org.bukkit.World;
 import org.bukkit.entity.Entity;
+import org.bukkit.entity.EntityType;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.HandlerList;
 import org.bukkit.event.Listener;
@@ -70,11 +71,12 @@ public final class LazyEntityCache
     }
 
     @EventHandler
-    public void onPlayerRespawn(PlayerRespawnEvent event) // not sure if i need this
+    public void onPlayerRespawn(PlayerRespawnEvent event)
     {
       final Entity player = event.getPlayer();
       final World newWorld = player.getWorld();
       LazyEntityCache.this.cacheWorld(newWorld);
+      LazyEntityCache.this.cacheEntity(player);
     }
 
     @EventHandler
@@ -111,7 +113,8 @@ public final class LazyEntityCache
     {
       final Chunk chunk = event.getChunk();
       for (Entity entity : chunk.getEntities())
-        LazyEntityCache.this.removeEntityNow(entity.getEntityId());
+        if (entity.getType() != EntityType.PLAYER)
+          LazyEntityCache.this.removeEntityNow(entity.getEntityId());
     }
 
     @EventHandler(ignoreCancelled = true)
