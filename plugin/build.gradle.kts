@@ -1,5 +1,6 @@
 plugins {
   id("java")
+  id("maven-publish")
 }
 
 var jarName = "bukec-plugin"
@@ -40,5 +41,16 @@ tasks {
 
   test {
     useJUnitPlatform()
+  }
+}
+
+publishing {
+  publications {
+    create<MavenPublication>("mavenJava") {
+      from(components["java"])
+      groupId = project.group.toString()
+      artifactId = jarName
+      version = project.version.toString()
+    }
   }
 }

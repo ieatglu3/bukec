@@ -1,8 +1,9 @@
 plugins {
   id("java")
+  id("maven-publish")
 }
 
-var jarName = "bukec"
+var jarName = "bukec-api"
 
 group = "com.github.ieatglu3"
 version = "1.0.0"
@@ -39,5 +40,16 @@ tasks {
 
   test {
     useJUnitPlatform()
+  }
+}
+
+publishing {
+  publications {
+    create<MavenPublication>("mavenJava") {
+      from(components["java"])
+      groupId = project.group.toString()
+      artifactId = jarName
+      version = project.version.toString()
+    }
   }
 }
