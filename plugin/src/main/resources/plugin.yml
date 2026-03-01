@@ -1,0 +1,5 @@
+name: "bukec"
+main: "com.github.ieatglu3.bukec.LazyEntityCachePlugin"
+version: "1.0.0"
+author: "ieatglu3"
+api-version: 1.13
