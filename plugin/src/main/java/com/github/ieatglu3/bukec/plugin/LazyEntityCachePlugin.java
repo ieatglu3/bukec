@@ -7,7 +7,9 @@ import java.time.Duration;
 import java.util.concurrent.atomic.AtomicReference;
 
 /**
- * Plugin that provides a global LazyEntityCache instance
+ * Plugin that provides a global instance of {@link LazyEntityCache}
+ * <br>
+ * Use {@link #getCache()} or {@link #getCacheOrNull()} to access the cache instance
  */
 public final class LazyEntityCachePlugin extends JavaPlugin
 {
@@ -15,9 +17,9 @@ public final class LazyEntityCachePlugin extends JavaPlugin
   private static final AtomicReference<LazyEntityCache> ENTITY_CACHE = new AtomicReference<>(null);
 
   /**
-   * Provides access to the LazyEntityCache instance
-   * @return the LazyEntityCache instance
-   * @throws IllegalStateException if the LazyEntityCache is not initialized
+   * Provides access to the {@link LazyEntityCache} instance
+   * @return the {@link LazyEntityCache} instance
+   * @throws IllegalStateException if the {@link LazyEntityCache} is not initialized
    */
   public static LazyEntityCache getCache()
   {
@@ -28,8 +30,8 @@ public final class LazyEntityCachePlugin extends JavaPlugin
   }
 
   /**
-   * Provides access to the LazyEntityCache instance
-   * @return the LazyEntityCache instance or null if it is not initialized
+   * Provides access to the {@link LazyEntityCache} instance
+   * @return the {@link LazyEntityCache} instance, or null if it is not initialized
    */
   public static LazyEntityCache getCacheOrNull()
   {

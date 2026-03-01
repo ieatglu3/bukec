@@ -25,6 +25,8 @@ dependencies {
 
 java {
   sourceCompatibility = JavaVersion.toVersion(21)
+  withSourcesJar()
+  withJavadocJar()
 }
 
 tasks {
